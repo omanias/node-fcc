@@ -4,12 +4,16 @@
   "description": "node concepts",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "dev": "nodemon async-pattern.js"
   },
   "keywords": [
     "node",
     "app"
   ],
   "author": "Omar Jesus Manias",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
 }
