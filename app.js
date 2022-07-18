@@ -1,17 +1,16 @@
-const http = require("http");
+const express = require("express");
+const path = require("path");
+const app = express();
+app.use(express.static("./public"));
 
-const server = http.createServer((req, res) => {
-  if (req.url === "/") {
-    res.end("Welcome to our home page");
-  }
-  if (req.url === "/about") {
-    res.end("Here is our short history");
-  }
-  res.end(
-    `<h1>Oops!</h1>
-<p>Please go to...</p>
-<a href="/">Home Page</a>`
-  );
+app.get("/", (req, res) => {
+  res.sendFile(path.resolve(__dirname, "./public/index.html"));
 });
 
-server.listen(5000);
+app.all("*", (req, res) => {
+  res.status(404).send("Resource not found");
+});
+
+app.listen(5000, () => {
+  console.log("Server is listening on port 5000...");
+});
